@@ -3,69 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Anniversary ❤️</title>
+<title>Who is your Saridon?</title>
 
 <style>
-body{
+*{
 margin:0;
 padding:0;
-background:linear-gradient(to bottom,#ff5f9e,#ff9acb);
-overflow:hidden;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ff4d88,#ff80ab);
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
-font-family:Arial,sans-serif;
+overflow:hidden;
+}
+
+.container{
+text-align:center;
 }
 
 h1{
 color:white;
-font-size:45px;
-text-align:center;
-text-shadow:0 0 20px red;
-z-index:10;
+margin-bottom:40px;
+font-size:35px;
+text-shadow:0 0 10px #ff0055;
 }
 
-.heart{
-position:absolute;
-color:red;
-font-size:25px;
-animation:fall linear infinite;
+.people{
+display:flex;
+gap:50px;
+justify-content:center;
+flex-wrap:wrap;
 }
 
-@keyframes fall{
-0%{
-transform:translateY(-100px);
-opacity:1;
+.person{
+cursor:pointer;
+transition:.3s;
 }
-100%{
-transform:translateY(110vh);
-opacity:0;
+
+.person img{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid white;
+box-shadow:0 0 20px rgba(255,255,255,.6);
 }
+
+.person p{
+color:white;
+font-size:22px;
+margin-top:12px;
+font-weight:bold;
+}
+
+#ankit{
+position:relative;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Happy Anniversary ❤️<br>My Saridon</h1>
+<div class="container">
+<h1>💖 Which is your Saridon? 💖</h1>
+
+<div class="people">
+
+<div class="person" onclick="rahul()">
+<img src="rahul.jpg">
+<p>Rahul ❤️</p>
+</div>
+
+<div class="person" id="ankit" onclick="moveAnkit()">
+<img src="boy.jpg">
+<p>?</p>
+</div>
+
+</div>
+</div>
 
 <script>
-function createHeart(){
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*3+2)+"s";
-heart.style.fontSize=(Math.random()*25+15)+"px";
-document.body.appendChild(heart);
 
-setTimeout(()=>{
-heart.remove();
-},5000);
+function rahul(){
+alert("Next Page Coming ❤️");
 }
 
-setInterval(createHeart,150);
+function moveAnkit(){
+
+let a=document.getElementById("ankit");
+
+a.style.position="absolute";
+
+a.style.left=Math.random()*(window.innerWidth-180)+"px";
+
+a.style.top=Math.random()*(window.innerHeight-180)+"px";
+
+}
+
 </script>
 
 </body>
