@@ -16,38 +16,47 @@ body{
 font-family:Arial,sans-serif;
 background:linear-gradient(135deg,#ff4d88,#ff80ab);
 height:100vh;
+width:100vw;
 display:flex;
 justify-content:center;
 align-items:center;
 overflow:hidden;
+position:relative;
 }
 
 .container{
 text-align:center;
+width:100%;
+max-width:500px;
+padding:0 20px;
 }
 
 h1{
 color:white;
 margin-bottom:40px;
-font-size:35px;
+font-size:30px;
 text-shadow:0 0 10px #ff0055;
 }
 
 .people{
 display:flex;
-gap:50px;
-justify-content:center;
-flex-wrap:wrap;
+flex-direction:row;
+justify-content:space-around;
+align-items:center;
+width:100%;
 }
 
 .person{
 cursor:pointer;
-transition:.3s;
+transition:.2s ease;
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
 .person img{
-width:150px;
-height:150px;
+width:130px;
+height:130px;
 border-radius:50%;
 object-fit:cover;
 border:5px solid white;
@@ -56,13 +65,14 @@ box-shadow:0 0 20px rgba(255,255,255,.6);
 
 .person p{
 color:white;
-font-size:22px;
+font-size:20px;
 margin-top:12px;
 font-weight:bold;
 }
 
 #ankit{
 position:relative;
+z-index:10;
 }
 </style>
 </head>
@@ -74,14 +84,16 @@ position:relative;
 
 <div class="people">
 
+<!-- Rahul (Left Side) -->
 <div class="person" onclick="rahul()">
-<img src="rahul.jpg">
+<img src="476324649_9027541004038459_7371337273674023541_n.heic.jpg" alt="Rahul">
 <p>Rahul ❤️</p>
 </div>
 
+<!-- Ankit (Right Side - Moving) -->
 <div class="person" id="ankit" onclick="moveAnkit()">
-<img src="boy.jpg">
-<p>?</p>
+<img src="9f4b848773c603c3899c26d853c981e3.jpg" alt="Ankit">
+<p>Ankit</p>
 </div>
 
 </div>
@@ -90,24 +102,34 @@ position:relative;
 <script>
 
 function rahul(){
-alert("Next Page Coming ❤️");
+window.location.href = "main.html";
 }
 
 function moveAnkit(){
 
-let a=document.getElementById("ankit");
+let a = document.getElementById("ankit");
 
-a.style.position="absolute";
+// DP Size
+const elementWidth = 140; 
+const elementHeight = 170;
 
-a.style.left=Math.random()*(window.innerWidth-180)+"px";
+// Screen Bounds with padding so it never overflows mobile screens
+const maxX = window.innerWidth - elementWidth - 10;
+const maxY = window.innerHeight - elementHeight - 10;
 
-a.style.top=Math.random()*(window.innerHeight-180)+"px";
+const randomX = Math.max(10, Math.floor(Math.random() * maxX));
+const randomY = Math.max(10, Math.floor(Math.random() * maxY));
+
+a.style.position = "fixed";
+a.style.left = randomX + "px";
+a.style.top = randomY + "px";
 
 }
 
 </script>
 
 </body>
+</html>
 </html>
         function wrongAnswer() {
             const msg = document.getElementById('wrong-msg');
