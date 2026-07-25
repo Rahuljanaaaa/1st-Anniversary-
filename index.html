@@ -89,15 +89,15 @@
     <h1>Who is your headache? 🤔</h1>
 
     <div class="photo-container">
-        <!-- Rahul ki Photo -->
+        <!-- Rahul ki Photo (Correct Choice) -->
         <div class="photo-wrapper" onclick="correctAnswer()">
-            <img src="rahul.jpg" alt="Rahul" class="profile-pic">
+            <img src="476324649_9027541004038459_7371337273674023541_n.heic.jpg" alt="Rahul" class="profile-pic">
             <p class="name">Rahul</p>
         </div>
 
-        <!-- Ankita ki Photo -->
+        <!-- Ankita ki Photo (Moving & Wrong Option) -->
         <div class="photo-wrapper wrong" id="wrong-container" onclick="wrongAnswer()">
-            <img src="ankita.jpg" alt="Ankita" class="profile-pic" id="ankita-pic">
+            <img src="9f4b848773c603c3899c26d853c981e3.jpg" alt="Ankita" class="profile-pic" id="ankita-pic">
             <p class="name" id="ankita-name">Ankita</p>
             <p class="wrong-answer" id="wrong-msg">Ghalat jawab! Firse try karo... 😜</p>
         </div>
@@ -105,9 +105,33 @@
 
     <script>
         function correctAnswer() {
+            // Rahul ki photo click hone par main.html page kholega
             window.location.href = "main.html";
         }
 
+        function wrongAnswer() {
+            const msg = document.getElementById('wrong-msg');
+            const pic = document.getElementById('ankita-pic');
+
+            msg.style.opacity = '1';
+            movePhoto(pic);
+        }
+
+        function movePhoto(photo) {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            const newX = Math.floor(Math.random() * (screenWidth - 150));
+            const newY = Math.floor(Math.random() * (screenHeight - 150));
+
+            photo.classList.add('moving');
+            photo.style.left = `${newX}px`;
+            photo.style.top = `${newY}px`;
+        }
+    </script>
+
+</body>
+</html>
         function wrongAnswer() {
             const msg = document.getElementById('wrong-msg');
             const pic = document.getElementById('ankita-pic');
